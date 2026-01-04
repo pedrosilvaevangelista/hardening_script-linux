@@ -3,138 +3,152 @@
 [![Shell Script](https://img.shields.io/badge/Shell-Bash-4EAA25.svg)](https://www.gnu.org/software/bash/)
 [![Debian/Ubuntu](https://img.shields.io/badge/Platform-Debian%2FUbuntu-orange.svg)](https://www.debian.org/)
 
-> **Automatize práticas essenciais de endurecimento de segurança em sistemas Linux baseados em Debian**
+> **Automate essential security hardening practices on Debian-based Linux systems**
 
-Este script realiza um **hardening básico de segurança** em sistemas Linux baseados em Debian (como Ubuntu), automatizando práticas de endurecimento para reduzir significativamente a superfície de ataque de um servidor recém-instalado.
-
----
-
-## 🎯 **Objetivo**
-
-Implementar automaticamente configurações de segurança essenciais que transformam um sistema Linux padrão em um ambiente mais resistente a ataques, seguindo as melhores práticas de segurança da indústria.
+This script performs **basic security hardening** on Debian-based Linux systems (such as Ubuntu), automating best-practice configurations to significantly reduce the attack surface of a freshly installed server.
 
 ---
 
-## 🚀 **Instalação e Uso**
+## 🎯 **Objective**
 
-### ⚠️ **IMPORTANTE: Execute como sudo/root**
+Automatically implement essential security configurations that transform a default Linux system into a more attack-resilient environment, following industry security best practices.
+
+---
+
+## 🚀 **Installation and Usage**
+
+### ⚠️ **IMPORTANT: Run as sudo/root**
 
 ```bash
-# Clone o repositório
+# Clone the repository
 git clone https://github.com/pedrosilvaevangelista/hardening_script-linux.git
 cd hardening_script-linux
 
-# Torne o script executável
+# Make the script executable
 chmod +x hardening_script-linux.sh
 
-# Execute o script
+# Run the script
 sudo ./hardening_script-linux.sh
 ```
 
 ---
 
-## 🔧 **Funcionalidades**
+## 🔧 **Features**
 
-### 🔄 **Atualização do Sistema**
-- Atualiza todos os pacotes e correções de segurança
-- Garante que o sistema esteja com as últimas patches
+### 🔄 **System Update**
 
-### 👤 **Gerenciamento de Usuários**
-- **Cria usuário administrativo** (`admin`) com privilégios sudo
-- **Desabilita login root via SSH** por segurança
-- Configura senha inicial: `lab123` (⚠️ **altere imediatamente**)
+* Updates all packages and security fixes
+* Ensures the system is fully patched
 
-### 🔐 **Endurecimento SSH**
+### 👤 **User Management**
+
+* **Creates an administrative user** (`admin`) with sudo privileges
+* **Disables root login via SSH** for increased security
+* Sets initial password: `lab123` (⚠️ **change immediately**)
+
+### 🔐 **SSH Hardening**
+
 ```bash
-✅ Backup automático da configuração original
-✅ Força protocolo SSHv2 apenas
-✅ Proíbe login root direto
-✅ Desabilita senhas vazias
-✅ Desativa X11 e TCP Forwarding
-✅ Banner de aviso legal
+✅ Automatic backup of original configuration
+✅ Enforces SSHv2 only
+✅ Prohibits direct root login
+✅ Disables empty passwords
+✅ Disables X11 and TCP forwarding
+✅ Legal warning banner
 ```
 
-### 🛡️ **Proteção contra Ataques**
-- **Fail2Ban**: Proteção automática contra brute force
-- **Firewall UFW** (opcional): Política padrão restritiva
-- **Hardening de kernel**: Proteções contra diversos tipos de ataque
+### 🛡️ **Attack Protection**
 
-### 🔒 **Política de Senhas Fortes**
-Implementa via PAM:
-- Mínimo **12 caracteres**
-- Obrigatório: maiúsculas, minúsculas, números e símbolos
-- Verificação de complexidade automática
+* **Fail2Ban**: Automatic protection against brute-force attacks
+* **UFW Firewall** (optional): Restrictive default policy
+* **Kernel hardening**: Protection against multiple attack vectors
 
-### 🔧 **Configurações de Kernel**
+### 🔒 **Strong Password Policy**
+
+Implemented via PAM:
+
+* Minimum **12 characters**
+* Requires uppercase, lowercase, numbers, and symbols
+* Automatic complexity enforcement
+
+### 🔧 **Kernel Configuration**
+
 ```bash
-🚫 Desabilita IP forwarding
-🚫 Bloqueia redirects ICMP
-🚫 Previne source routing
-📊 Habilita logs de pacotes suspeitos
-🛡️ Proteção contra SYN flood
-🔒 Oculta ponteiros de kernel
+🚫 Disables IP forwarding
+🚫 Blocks ICMP redirects
+🚫 Prevents source routing
+📊 Enables logging of suspicious packets
+🛡️ SYN flood protection
+🔒 Hides kernel pointers
 ```
 
-### 📁 **Permissões de Arquivos**
-- Ajusta permissões de arquivos críticos (`/etc/passwd`, `/etc/shadow`)
-- Limita acesso a informações sensíveis do sistema
+### 📁 **File Permissions**
 
-### 🔄 **Atualizações Automáticas**
-- Configura `unattended-upgrades`
-- Aplicação automática de patches de segurança
-- Reduz janela de vulnerabilidade
+* Adjusts permissions of critical files (`/etc/passwd`, `/etc/shadow`)
+* Restricts access to sensitive system information
+
+### 🔄 **Automatic Updates**
+
+* Configures `unattended-upgrades`
+* Automatic application of security patches
+* Reduces vulnerability window
 
 ---
 
-## 📋 **Checklist Pós-Execução**
+## 📋 **Post-Execution Checklist**
 
-Após executar o script, seu sistema terá:
+After running the script, your system will have:
 
-- ✅ Sistema completamente atualizado
-- ✅ Login root SSH desabilitado
-- ✅ Usuário administrativo criado
-- ✅ SSH configurado com práticas seguras
-- ✅ Fail2Ban ativo contra brute force
-- ✅ Política de senhas fortes implementada
-- ✅ Kernel endurecido contra ataques
-- ✅ Atualizações automáticas de segurança
-- ✅ Permissões de arquivos ajustadas
-- ✅ Banner de aviso configurado
+* ✅ Fully updated system
+* ✅ Root SSH login disabled
+* ✅ Administrative user created
+* ✅ SSH configured with secure practices
+* ✅ Fail2Ban active against brute force
+* ✅ Strong password policy enforced
+* ✅ Kernel hardened against attacks
+* ✅ Automatic security updates enabled
+* ✅ File permissions adjusted
+* ✅ Security warning banner configured
 
 ---
 
-## ⚠️ **Avisos Importantes**
+## ⚠️ **Important Warnings**
 
-### 🔄 **Reinicialização Recomendada**
-Após a execução, **reinicie o sistema** para garantir que todas as configurações sejam aplicadas corretamente.
+### 🔄 **Reboot Recommended**
 
-### 🔑 **Altere a Senha Padrão**
-O usuário `admin` é criado com senha `lab123`. **ALTERE IMEDIATAMENTE** por segurança:
+After execution, **reboot the system** to ensure all configurations are properly applied.
+
+### 🔑 **Change the Default Password**
+
+The `admin` user is created with the password `lab123`. **CHANGE IT IMMEDIATELY**:
+
 ```bash
-
 sudo passwd admin
 ```
 
-### 🧪 **Teste em Ambiente Controlado**
-Sempre teste o script em um ambiente de desenvolvimento antes de aplicar em produção.
+### 🧪 **Test in a Controlled Environment**
+
+Always test the script in a development or staging environment before deploying to production.
 
 ---
 
-## 🔧 **Configurações Opcionais**
+## 🔧 **Optional Configurations**
 
-O script inclui seções comentadas para:
+The script includes commented sections for:
 
-- **Firewall UFW**: Descomente para ativar firewall restritivo
-- **Desabilitar IPv6**: Para ambientes que não utilizam IPv6
+* **UFW Firewall**: Uncomment to enable a restrictive firewall
+* **Disable IPv6**: For environments that do not use IPv6
 
 ---
 
-## 📞 **Suporte**
+## 📞 **Support**
 
-Encontrou algum problema ou tem sugestões? Abra uma issue no repositório!
+Found an issue or have suggestions? Open an issue in the repository.
 
 <div align="center">
 
-**🛡️ Mantenha seu sistema seguro! 🛡️**
+**🛡️ Keep your system secure! 🛡️**
 
 </div>
+
+---
